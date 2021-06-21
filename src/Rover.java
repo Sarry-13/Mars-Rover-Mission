@@ -3,59 +3,32 @@ public class Rover {
 	
 	//El rover inicia su "ruta" encarando Norte. Inicializamos la variable 
 	
-	String facingDirection = "N";
 
+	Movement move = new Movement("N", 0, 0);
+	
 	public String execute(String commands) {
 		
 		//Convertimos el string introducido a un array de caracteres
 		for (char singleCommand : commands.toCharArray()) { 
 			if (singleCommand == 'R') {
-				turn('R');
+				move.turn('R');
 			}else if(singleCommand == 'L') {
-				turn('L');
+				move.turn('L');
+			}else if(singleCommand == 'F') {
+				move.moveForward();
 			}
 		}
-		return "0:0:" + facingDirection;
+		//Ubicación y orientación resultante
+		return move.getXcoordinate() + ":" + move.getYcoordinate() + ":" + move.getFacingDirection();
 	}
 	
 	
 
-	private void turn(char turnDirection) {
-		
-		//Rotación a la derecha
-		if (turnDirection == 'R') {
-			switch(facingDirection) {
-			  case "N":
-				  facingDirection = "E";
-			    break;
-			  case "E":
-				  facingDirection = "S";
-			    break;
-			  case "S":
-				  facingDirection = "W";
-				 break;
-			  case "W":
-				  facingDirection = "N";
-				 break;
-			}
-			
-		//Rotación a la izquierda
-		}else if (turnDirection ==  'L') {
-			switch(facingDirection) {
-			  case "N":
-				  facingDirection = "W";
-			    break;
-			  case "W":
-				  facingDirection = "S";
-			    break;
-			  case "S":
-				  facingDirection = "E";
-				 break;
-			  case "E":
-				  facingDirection = "N";
-				 break;
-			}
-		}
+
+
+
+
+	
 		
 	}
 
@@ -106,4 +79,4 @@ public class Rover {
 		}
 	}
 */
-}
+
