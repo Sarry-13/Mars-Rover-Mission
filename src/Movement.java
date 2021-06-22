@@ -1,9 +1,12 @@
 
 public class Movement {
 	
+	private static final int MAX_LENGTH = 199;
+	
 	private String facingDirection;
 	private int xCoordinate;
 	private int yCoordinate;
+	private boolean hasEncounteredWall = false;
 	
 	
 	//Constructor
@@ -31,12 +34,12 @@ public class Movement {
 	public void moveForward() {
 		switch(facingDirection) {
 		  case "N":
-			  if (this.yCoordinate < 199) {
+			  if (this.yCoordinate < MAX_LENGTH) {
 				  this.yCoordinate++;  
 			  }
 		    break;
 		  case "E":
-			  if (this.xCoordinate < 199) {
+			  if (this.xCoordinate < MAX_LENGTH) {
 				  this.xCoordinate++;  
 			  }
 			break;
@@ -52,7 +55,8 @@ public class Movement {
 			 break;
 		}
 	}
-	
+
+
 	
 	//Giro
 	public void turn(char turnDirection) {

@@ -19,10 +19,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 			rover = new Rover();
 		}
 
+		
+		
+		
 		//Para los tests, partimos de que el rover se encuentra en la posición 0:0, encarado a N (norte)
+		//Situamos obstáculos en 1:4, 2:3, 4:3 (x:y)
 		/******************************************************/
 		//Rotación a la derecha	
-			
+		
 		@ParameterizedTest
 		@CsvSource({"R, 0:0:E", "RR, 0:0:S", "RRR, 0:0:W", "RRRR, 0:0:N", "RRRRR, 0:0:E"})
 
@@ -34,7 +38,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 		
 		/******************************************************/
 		//Rotación a la izquierda
-			
+		
 		@ParameterizedTest
 		@CsvSource({"L, 0:0:W", "LL, 0:0:S", "LLL, 0:0:E", "LLLL, 0:0:N", "LLLLL, 0:0:W"})
 
@@ -46,7 +50,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 		/******************************************************/
 		
 		//Avance (sin y con giro)
-		
+	
 		@ParameterizedTest
 		@CsvSource({"F, 0:1:N", "FF, 0:2:N", "RF, 1:0:E"})
 
@@ -57,7 +61,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 		
 		/******************************************************/
 				
-		//Cuando llegamos a la casilla 199, no avanzamos más (eje y) 
+		//Cuando llegamos a la casilla 0 o a la 199 no avanzamos más.(Tablero 200 x 200)
 		
 		@ParameterizedTest
 		@MethodSource("maxSquares")
@@ -82,6 +86,20 @@ import org.junit.jupiter.params.provider.MethodSource;
 					Arguments.of("L" + maximumSquares + "FFFF","0:0:W")
 					);
 		}
+		
+		/******************************************************/
+		
+		//Detección de obstaculos
+		//Tests:
+		//	-Obstáculo en 1:4, 2:3, 4:3
+		
+		@ParameterizedTest
+		@CsvSource({"RFLFFFF, 1:3:N", "RFFLFFFFFF, 2:2:N", "RFFFFFLFFFLFFFFFFF, 5:3:W"})
+
+		public void detectObstacles(String commands, String position) {
+			assertEquals(rover.execute(commands), (position));
+		}
+		
 	
 
 }
