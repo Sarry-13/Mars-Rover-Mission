@@ -6,7 +6,7 @@ public class Movement {
 	private String facingDirection;
 	private int xCoordinate;
 	private int yCoordinate;
-	private boolean hasEncounteredWall = false;
+
 	
 	
 	//Constructor
