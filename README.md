@@ -3,7 +3,7 @@
 You’re part of the team that explores Mars by sending remotely controlled vehicles to the surface of the planet.
 The planet, which is curiously rectangular and sized 200x200, must be navigated by Rovers so that their on-board cameras can get a complete view of the surrounding terrain to send back to Earth.
 A rover's position and location is represented by a combination of x and y co-ordinates and a letter representing one of the four cardinal compass points. The planet is divided up into a grid to simplify navigation. An example position might be 0:0:N, which means the rover is in the bottom left corner and facing North. This is the position where the Rover will be located at the beggining of the mission.
-In order to control a rover, the possible letters are 'L', 'R' and 'M'. 'L' and 'R' makes the rover spin 90 degrees left or right respectively, without moving from its current spot. 'F' means move forward one grid point, and maintain the same heading.
+In order to control a rover, the possible letters are 'L', 'R' and 'F'. 'L' and 'R' makes the rover spin 90 degrees left or right respectively, without moving from its current spot. 'F' means move forward one grid point, and maintain the same heading.
 An obstacle detection before each move to a new square has been implemented. If a given sequence of commands encounters an obstacle, the rover moves up to the last
 possible point, aborts the sequence and reports the obstacle.
 
